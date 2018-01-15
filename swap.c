@@ -1,15 +1,15 @@
 #include <stdio.h>
-void swap(int x,int y); //declaration of function
+void swap(int * x,int * y); //declaration of function
 int main(){
 	//The classic example of understanding importance of pointers
 	//everytime we call a function we are creating new variables and hence it is impossible to swap values of original variables
-	static int a=5;
-	static int b=10;
+	int a=5;
+	int b=10;
 	
 	printf("Before swap a was %d\n",a);
 	printf("Before swap b was %d\n",b);
 	
-	swap(a,b);
+	swap(&a,&b);
 	
 	printf("After swap a was %d\n",a);
 	printf("After swap b was %d\n",b);
@@ -18,10 +18,10 @@ int main(){
 	
 }
 
-void swap(int x,int y){
+void swap(int * x,int * y){
 	
-	int temp=x;
-	x=y;
-	y=temp;
+	int temp=*x;
+	*x=*y;
+	*y=temp;
 	
 }
